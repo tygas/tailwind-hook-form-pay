@@ -1,8 +1,8 @@
 {
-  "projectName": "vite-react-ts-extended",
+  "projectName": "vite-rtk-query",
   "projectOwner": "laststance",
   "repoType": "github",
-  "repoHost": "https://github.com/laststance/vite-react-ts-extended",
+  "repoHost": "https://github.com/laststance/vite-rtk-query",
   "files": [
     "README.md"
   ],
@@ -20,7 +20,17 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "jhonber",
+      "name": "Jhon Jimenez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/451392?v=4",
+      "profile": "https://github.com/jhonber",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "commitType": "docs"
 }

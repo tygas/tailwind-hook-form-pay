@@ -1,16 +1,16 @@
-import { render } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import React from 'react'
-import { Provider } from 'react-redux'
 
 import App from './App'
-import { store } from './app/store'
 
-test('renders learn react link', () => {
-  const { getByText } = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
+test('working with msw', async () => {
+  render(<App />)
+
+  // Showing Spinner
+  await waitFor(
+    () => {
+      expect(screen.getByText('Amount')).toBeInTheDocument()
+    },
+    { timeout: 4000 },
   )
-
-  expect(getByText(/learn/i)).toBeInTheDocument()
 })

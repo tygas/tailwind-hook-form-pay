@@ -10,9 +10,6 @@ jobs:
   typecheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2-beta
-        with:
-          node-version: '16.9'
-      - run: yarn install
-      - run: yarn typecheck
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/prepare
+      - run: pnpm typecheck

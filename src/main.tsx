@@ -1,17 +1,20 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
+
 import './index.css'
-import { Provider } from 'react-redux'
-
 import App from './App'
-import { store } from './app/store'
 
-// @ts-expect-error @types/react-dom doesn't support v18 yet
-const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
-)
+const root = ReactDOM.createRoot(document.getElementById('root')!)
+
+if (process.env.NODE_ENV === 'development') {
+  // Prepare MSW in a Service Worker
+  import('../mocks/browser')
+    .then(({ worker }) => {
+      worker.start()
+    })
+    // Launched mock server, and then start client React app
+    .then(() => root.render(<App />))
+} else {
+  // Production
+  root.render(<App />)
+}
