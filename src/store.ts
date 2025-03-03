@@ -2,16 +2,13 @@ import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { combineReducers } from 'redux'
 
-import counterReducer from './features/Counter/counterSlice'
-import { docsApi } from './services/docs'
+import counterReducer from './features/counterSlice'
 
 export const store = configureStore({
   devTools: process.env.NODE_ENV === 'development',
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([docsApi.middleware]),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   reducer: combineReducers({
     counter: counterReducer,
-    [docsApi.reducerPath]: docsApi.reducer,
   }),
 })
 

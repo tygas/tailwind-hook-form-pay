@@ -2,20 +2,25 @@ import React from 'react'
 import { Provider as ReduxStoreProvider } from 'react-redux'
 import { BrowserRouter, Routes, Route } from 'react-router'
 
-import './features/Counter/index.module.css'
-import Counter from './features/Counter/index'
-import DocumentList from './features/DocumentList'
+import './features/Pay/index.module.css'
+import { Layout } from '@c/Layout'
+
+import { LocaleProvider } from './context/LocaleContext'
+import Pay from './features/Pay/index'
 import { store } from './store'
 
 const App: React.FC = () => {
   return (
     <ReduxStoreProvider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Counter />} />
-          <Route path="/doclist" element={<DocumentList />} />
-        </Routes>
-      </BrowserRouter>
+      <LocaleProvider>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Pay />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </LocaleProvider>
     </ReduxStoreProvider>
   )
 }
